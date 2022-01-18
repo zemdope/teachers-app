@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Wrapper = styled.li`
   display: flex;
@@ -6,7 +6,7 @@ export const Wrapper = styled.li`
   position: relative;
 
   &:not(:last-child)::after {
-    content: "";
+    content: '';
     position: absolute;
     bottom: 0;
     width: 100%;
@@ -28,7 +28,7 @@ export const StyledAverage = styled.div`
   background: ${({ theme, value }) => {
     if (value > 4) return theme.colors.success;
     if (value > 3) return theme.colors.warning;
-    if (value > 2) return theme.colors.error;
+    if (value > 1) return theme.colors.error;
     return theme.colors.grey;
   }};
 `;
