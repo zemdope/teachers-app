@@ -1,15 +1,15 @@
-import { Input } from "components/atoms/Input/Input";
-import React, { useState } from "react";
-import debounce from "lodash.debounce";
-import { useCombobox } from "downshift";
+import { Input } from 'components/atoms/Input/Input';
+import React, { useState } from 'react';
+import debounce from 'lodash.debounce';
+import { useCombobox } from 'downshift';
 import {
   SearchBarWrapper,
   SearchResults,
   SearchResultsItem,
   SearchWrapper,
-  StatusInfo,
-} from "components/organisms/SearchBar/SearchBar.styles";
-import { useStudents } from "hooks/useStudents";
+  StatusInfo
+} from 'components/organisms/SearchBar/SearchBar.styles';
+import { useStudents } from 'hooks/useStudents';
 
 export const SearchBar = () => {
   const [matchingStudents, setMatchingStudents] = useState([]);
@@ -26,10 +26,10 @@ export const SearchBar = () => {
     getInputProps,
     getComboboxProps,
     highlightedIndex,
-    getItemProps,
+    getItemProps
   } = useCombobox({
     items: matchingStudents,
-    onInputValueChange: getMatchingStudents,
+    onInputValueChange: getMatchingStudents
   });
 
   return (
@@ -43,21 +43,20 @@ export const SearchBar = () => {
       <SearchWrapper {...getComboboxProps()}>
         <Input
           {...getInputProps()}
-          name="Search"
-          id="Search"
-          placeholder="Search"
+          name='Search'
+          id='Search'
+          placeholder='Search'
         />
         <SearchResults
           isVisible={isOpen && matchingStudents.length > 0}
           {...getMenuProps()}
-        >
+          aria-label='results'>
           {isOpen &&
             matchingStudents.map((item, index) => (
               <SearchResultsItem
                 isHighlighted={highlightedIndex === index}
                 {...getItemProps({ item, index })}
-                key={item.id}
-              >
+                key={item.id}>
                 {item.name}
               </SearchResultsItem>
             ))}
