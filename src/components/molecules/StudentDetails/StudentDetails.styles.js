@@ -16,7 +16,7 @@ export const BigAverage = styled(Average)`
   height: 68px;
   font-size: ${({ theme }) => theme.fontSize.xl};
   position: absolute;
-  left: 30px;
+  left: 0px;
 `;
 
 export const StyledDetails = styled.div`
