@@ -1,18 +1,14 @@
 import React from 'react';
-import { ThemeProvider } from 'styled-components';
-import { GlobalStyle } from 'assets/styles/GlobalStyle';
-import { theme } from 'assets/styles/theme';
 import { Wrapper } from './Root.styles';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Redirect
-} from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 import MainTemplate from 'components/templates/MainTemplate/MainTemplate';
 import Dashboard from 'views/Dashboard';
 import FormField from 'components/molecules/FormField/FormField';
 import { Button } from 'components/atoms/Button/Button';
+import { useForm } from 'react-hook-form';
+import { useAuth } from '../hooks/useAuth';
+import ErrorMessage from 'components/molecules/ErrorMessage/ErrorMessage';
+import { useError } from 'hooks/useError';
 
 const AuthenticatedApp = () => {
   return (
@@ -31,9 +27,17 @@ const AuthenticatedApp = () => {
   );
 };
 
-const UnuthenticatedApp = () => {
+const UnauthenticatedApp = () => {
+  const auth = useAuth();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors }
+  } = useForm();
+
   return (
     <form
+      onSubmit={handleSubmit(auth.signIn)}
       style={{
         height: '100vh',
         display: 'flex',
@@ -41,22 +45,34 @@ const UnuthenticatedApp = () => {
         alignItems: 'center',
         flexDirection: 'column'
       }}>
-      <FormField label='login' name='login' id='login' />
-      <FormField label='pasword' name='pasword' id='pasword' type='password' />
-      <Button>Sign in</Button>
+      <FormField
+        label='login'
+        name='login'
+        id='login'
+        {...register('login', { required: true })}
+      />
+      {errors.login && <span>Login is required</span>}
+      <FormField
+        label='password'
+        name='password'
+        id='password'
+        type='password'
+        {...register('password', { required: true })}
+      />
+      {errors.password && <span>Password is required</span>}
+      <Button type='submit'>Sign in</Button>
     </form>
   );
 };
-const Root = () => {
-  const user = null;
-  return (
-    <Router>
-      <ThemeProvider theme={theme}>
-        <GlobalStyle />
 
-        {user ? <AuthenticatedApp /> : <UnuthenticatedApp />}
-      </ThemeProvider>
-    </Router>
+const Root = () => {
+  const auth = useAuth();
+  const { error } = useError();
+  return (
+    <>
+      {error ? <ErrorMessage /> : null}
+      {auth.user ? <AuthenticatedApp /> : <UnauthenticatedApp />}
+    </>
   );
 };
 

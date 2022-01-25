@@ -16,7 +16,7 @@ const StudentsListItem = ({
           {name}
           <DeleteButton />
         </p>
-        <p>attendance: {attendance}</p>
+        <p>attendance: {attendance}%</p>
       </StyledInfo>
     </Wrapper>
   );
