@@ -50,5 +50,10 @@ export const db = factory({
     name: () => 'Jacek Sobczak',
     login: () => 'teacher@gmail.com',
     password: () => '1234'
+  },
+  note: {
+    id: primaryKey(faker.datatype.uuid),
+    title: () => 'lorem ipsum',
+    content: () => 'lorem ipsum'
   }
 });

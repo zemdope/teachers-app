@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@mswjs/data": "^0.8.4",
+    "@reduxjs/toolkit": "^1.7.1",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.2",
@@ -17,8 +18,10 @@
     "react-error-overlay": "^6.0.9",
     "react-hook-form": "^7.24.1",
     "react-modal": "^3.14.4",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "redux": "^4.1.2",
     "sass": "^1.46.0",
     "styled-components": "^5.3.3",
     "web-vitals": "^0.2.4"
@@ -27,6 +30,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
+    "test:e2e": "cypress open --project ./src/e2e",
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
@@ -54,14 +58,18 @@
     ]
   },
   "devDependencies": {
+    "@cypress/webpack-dev-server": "^1.8.0",
     "@storybook/addon-actions": "^6.4.13",
     "@storybook/addon-essentials": "^6.4.13",
     "@storybook/addon-links": "^6.4.13",
     "@storybook/node-logger": "^6.4.13",
     "@storybook/preset-create-react-app": "^3.2.0",
     "@storybook/react": "^6.4.13",
+    "@testing-library/cypress": "^8.0.2",
     "axios-mock-adapter": "^1.20.0",
+    "cypress": "^9.3.1",
     "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-cypress": "^2.12.1",
     "eslint-plugin-prettier": "^3.4.1",
     "husky": "^4.3.8",
     "lint-staged": "^10.5.3",
