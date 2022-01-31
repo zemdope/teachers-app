@@ -3,7 +3,7 @@
 To get a local copy up and running follow these simple steps.
 
 ## Installation
-1. Clone the repo git clone https://github.com/zemdope/teachers-app.git
+1. Clone the repo: ### `git clone https://github.com/zemdope/teachers-app.git`
 2. Install NPM packages:  ### `npm install`
 3. Run the server: ### `npm start`
 4. Run the test: npm run test ### `npm run test`
