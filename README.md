@@ -7,7 +7,7 @@ To get a local copy up and running follow these simple steps.
 2. Install NPM packages:  ### `npm install`
 3. Run the server: ### `npm start`
 4. Sign in to app:
- ###`login: teacher@oo.com`
+ ###`login: teacher@gmail.com`
  ###`password: 1234`
  
  
